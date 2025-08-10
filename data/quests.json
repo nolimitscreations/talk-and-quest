@@ -1,0 +1,117 @@
+{
+  "quests": [
+    {
+      "id": "r-rocket",
+      "title": "R Rocket Quest",
+      "targets": [
+        "R-initial",
+        "R-medial",
+        "R-final"
+      ],
+      "activities": [
+        {
+          "type": "repeat_after_me",
+          "items": [
+            "rain",
+            "rope",
+            "rocket",
+            "rabbit",
+            "robot",
+            "car",
+            "door"
+          ]
+        },
+        {
+          "type": "sight_word_sprint",
+          "words": [
+            "because",
+            "another",
+            "between",
+            "important",
+            "through",
+            "enough",
+            "example"
+          ]
+        },
+        {
+          "type": "fluency_story",
+          "title": "Skylar\u2019s Secret Shortcut",
+          "paragraphs": [
+            "Samuel and Spencer followed Skylar along a quiet trail.",
+            "The corgi turned left at a big rock\u2014and suddenly, a hidden playground appeared!"
+          ],
+          "questions": [
+            {
+              "q": "Who found the shortcut?",
+              "options": [
+                "Skylar",
+                "A cat",
+                "A bird"
+              ],
+              "answer": 0
+            },
+            {
+              "q": "Where did the trail lead?",
+              "options": [
+                "Playground",
+                "Library",
+                "Bakery"
+              ],
+              "answer": 0
+            }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_1.png"
+    },
+    {
+      "id": "sh-ship",
+      "title": "SH Ship Quest",
+      "targets": [
+        "SH-initial"
+      ],
+      "activities": [
+        {
+          "type": "repeat_after_me",
+          "items": [
+            "ship",
+            "shell",
+            "shop",
+            "shark",
+            "shoe"
+          ]
+        },
+        {
+          "type": "sight_word_sprint",
+          "words": [
+            "favorite",
+            "different",
+            "probably",
+            "beautiful",
+            "friend"
+          ]
+        },
+        {
+          "type": "fluency_story",
+          "title": "The Shiny Shell",
+          "paragraphs": [
+            "Skylar nudged a shiny shell across the sand.",
+            "Samuel and Spencer held it to their ears and heard the sea say, \u2018hello!\u2019"
+          ],
+          "questions": [
+            {
+              "q": "What did Skylar find?",
+              "options": [
+                "A shell",
+                "A coin",
+                "A toy"
+              ],
+              "answer": 0
+            }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_2.png"
+    }
+  ]
+}

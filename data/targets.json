@@ -1,0 +1,230 @@
+{
+  "R": {
+    "initial": [
+      "rain",
+      "rope",
+      "rocket",
+      "rabbit",
+      "robot",
+      "river",
+      "ring",
+      "road",
+      "red",
+      "ride"
+    ],
+    "medial": [
+      "caRrot",
+      "aRound",
+      "stoRy",
+      "spiRit",
+      "beRRy",
+      "paRent",
+      "diRect",
+      "meRry",
+      "aRmor",
+      "tiGer"
+    ],
+    "final": [
+      "car",
+      "door",
+      "star",
+      "bear",
+      "paper",
+      "tower",
+      "dollar",
+      "guitar",
+      "soccer",
+      "teacher"
+    ]
+  },
+  "L": {
+    "initial": [
+      "lamp",
+      "leaf",
+      "lion",
+      "lemon",
+      "laptop",
+      "lake",
+      "lime",
+      "log",
+      "lock",
+      "lizard"
+    ],
+    "medial": [
+      "piLlow",
+      "meLon",
+      "yoLk",
+      "jeLLy",
+      "coLlege",
+      "yeLLow",
+      "soLar",
+      "vaLley",
+      "biCycle",
+      "oLive"
+    ],
+    "final": [
+      "ball",
+      "bell",
+      "pool",
+      "hill",
+      "mail",
+      "owl",
+      "seal",
+      "whale",
+      "pencil",
+      "towel"
+    ]
+  },
+  "S": {
+    "initial": [
+      "sun",
+      "sand",
+      "sock",
+      "sail",
+      "soup",
+      "soap",
+      "seed",
+      "seal",
+      "sit",
+      "silly"
+    ],
+    "medial": [
+      "muSic",
+      "peNcil",
+      "baSic",
+      "houSe",
+      "raZor",
+      "baSin",
+      "buSy",
+      "caStle",
+      "gaSses",
+      "noSy"
+    ],
+    "final": [
+      "bus",
+      "class",
+      "house",
+      "mouse",
+      "glass",
+      "dress",
+      "grass",
+      "horse",
+      "ice",
+      "juice"
+    ]
+  },
+  "SH": {
+    "initial": [
+      "ship",
+      "shell",
+      "shop",
+      "shark",
+      "shoe",
+      "shovel",
+      "shower",
+      "shelter",
+      "short",
+      "shine"
+    ],
+    "medial": [
+      "fiSHing",
+      "wiSHes",
+      "diSHes",
+      "poLiSHed",
+      "maRSHes",
+      "suNShiNe",
+      "puSHing",
+      "brusHes",
+      "smaSHeS",
+      "raShiN"
+    ],
+    "final": [
+      "fish",
+      "brush",
+      "dish",
+      "crash",
+      "cash",
+      "mash",
+      "push",
+      "wash",
+      "wish",
+      "flash"
+    ]
+  },
+  "CH": {
+    "initial": [
+      "chair",
+      "cheese",
+      "chicken",
+      "chain",
+      "cherry",
+      "chip",
+      "chalk",
+      "chart",
+      "cheer",
+      "chill"
+    ],
+    "medial": [
+      "teaCHer",
+      "kiTChen",
+      "peaCHes",
+      "paTCHes",
+      "benCHes",
+      "caTCHing",
+      "maTCHing",
+      "lAuNCHeS",
+      "waTCHing",
+      "brunCHes"
+    ],
+    "final": [
+      "peach",
+      "beach",
+      "bench",
+      "match",
+      "watch",
+      "catch",
+      "lunch",
+      "crunch",
+      "touch",
+      "hatch"
+    ]
+  },
+  "TH": {
+    "initial": [
+      "thumb",
+      "think",
+      "thunder",
+      "thirty",
+      "thousand",
+      "thick",
+      "thin",
+      "thief",
+      "thorn",
+      "thirsty"
+    ],
+    "medial": [
+      "moTHer",
+      "faTHer",
+      "eaTHer",
+      "gaTHer",
+      "baTHing",
+      "boTHeR",
+      "weaTHeR",
+      "auTHor",
+      "paTHeS",
+      "broTHeR"
+    ],
+    "final": [
+      "bath",
+      "tooth",
+      "moth",
+      "cloth",
+      "teeth",
+      "wreath",
+      "earth",
+      "month",
+      "health",
+      "birth"
+    ]
+  }
+}
