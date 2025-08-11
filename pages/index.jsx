@@ -1,109 +1,144 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Layout from '@/components/Layout';
-import ProgressBar from '@/components/ProgressBar';
-import { loadState, getProfile, onStateChange } from '@/lib/storage';
-import questsData from '../data/quests.json';
 
-// Keep targets hidden for kids; flip to true if you want to see them.
-const SHOW_TARGETS = false;
-
-function getTitle(q) {
-  return q?.title || q?.name || 'Untitled Quest';
-}
-function getIcon(q) {
-  if (q?.icon) return q.icon;
-  if (q?.emoji) return q.emoji;
-  const t = getTitle(q).toLowerCase();
-  if (t.includes('rocket')) return '🚀';
-  if (t.includes('lighthouse')) return '🗼';
-  if (t.includes('thunder')) return '⛈️';
-  if (t.includes('ship')) return '🚢';
-  return '🎯';
-}
+import quests from '@/data/quests.json';
+import {
+  loadState,
+  onStateChange,
+  setProfile,
+  getProgress,
+  getStickers,
+  getDyslexia,
+  setDyslexia,
+  getQuiet,
+  setQuiet,
+} from '@/lib/storage';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-  const [state, setState] = useState({ active: 'Samuel' });
-  const [p, setP] = useState({ minutes: 0, attempts: 0, stickers: [] });
+  // Local UI state mirrors localStorage and updates via subscription
+  const [state, setState] = useState(loadState());
 
   useEffect(() => {
-    setMounted(true);
+    // sync once on mount
     setState(loadState());
-    setP(getProfile());
-    const off = onStateChange(() => {
-      setState(loadState());
-      setP(getProfile());
-    });
-    return () => { off && off(); };
+    // subscribe to changes (profile switch, toggles, stickers, etc.)
+    const off = onStateChange((s) => setState(s));
+    return off;
   }, []);
 
-  if (!mounted) {
-    return (
-      <Layout>
-        <div className="card"><h1>Welcome 👋</h1><p>Loading…</p></div>
-      </Layout>
-    );
-  }
+  const profile = state.profile;
+  const progress = getProgress(profile);
+  const stickers = getStickers(profile);
 
-  const active = state.active || 'Samuel';
-  const allQuests = Array.isArray(questsData?.quests) ? questsData.quests : [];
-  // ✅ Same 8 quests for every profile
-  const viewQuests = allQuests.slice(0, 8);
+  const handleProfileChange = (e) => setProfile(e.target.value);
+  const toggleQuiet = () => setQuiet(!getQuiet());
+  const toggleDyslexia = () => setDyslexia(!getDyslexia());
+
+  // Ensure we show up to 8 quest cards
+  const visibleQuests = Array.isArray(quests) ? quests.slice(0, 8) : [];
 
   return (
-    <Layout>
-      <div className="card">
-        <h1>Welcome, {active} 👋</h1>
+    <div className="page">
+      {/* Top controls */}
+      <div className="toolbar">
+        <label className="lbl">Profile</label>
+        <select value={profile} onChange={handleProfileChange} className="select">
+          <option>Samuel</option>
+          <option>Spencer</option>
+          <option>Guest</option>
+        </select>
+
+        <button className="chip" onClick={toggleQuiet}>
+          Quiet Mode: {getQuiet() ? 'On' : 'Off'}
+        </button>
+        <button className="chip" onClick={toggleDyslexia}>
+          Dyslexia Mode: {getDyslexia() ? 'On' : 'Off'}
+        </button>
+
+        <Link href="/dashboard" className="btn">Dashboard</Link>
+      </div>
+
+      {/* Welcome */}
+      <section className="welcome card">
+        <h1>Welcome, {profile} 👋</h1>
         <p>Pick a quest. Practice for 8–12 minutes. Celebrate every try.</p>
+      </section>
 
-        <div className="grid" style={{ marginTop: 12 }}>
-          {viewQuests.map((q) => (
-            <div key={q.id} className="quest-card">
-              <div className="quest-header vertical">
-                <span className="quest-icon" aria-hidden>{getIcon(q)}</span>
-                <h3 className="quest-title">{getTitle(q)}</h3>
-              </div>
-
-              {SHOW_TARGETS && (
-                <p className="quest-targets">
-                  {Array.isArray(q.targets) ? q.targets.join(' • ') : '—'}
-                </p>
-              )}
-
-              <Link href={`/quest/${q.id}`}>
-                <button className="btn">Let&rsquo;s go!</button>
-              </Link>
+      {/* Quests grid */}
+      <section className="grid">
+        {visibleQuests.map((q) => (
+          <article key={q.id} className="quest card">
+            <div className="quest-top">
+              <span className="quest-icon" aria-hidden="true">{q.icon || '🎯'}</span>
+              <h3 className="quest-title">{q.title}</h3>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="card" style={{ marginTop: 12 }}>
-        <h2>Today&rsquo;s vibe</h2>
-        <div className="flex" style={{ justifyContent: 'space-between' }}>
-          <div style={{ flex: 1 }}>
-            <p className="small">Practice minutes (total)</p>
-            <ProgressBar value={Math.min(100, (p.minutes || 0) * 5)} />
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div className="badge">Attempts: {p.attempts || 0}</div>
-          </div>
-        </div>
-      </div>
+            {q.targets && (
+              <p className="targets">
+                Targets: {q.targets.join(', ')}
+              </p>
+            )}
 
-      <div className="card" style={{ marginTop: 12 }}>
+            <Link href={`/quest/${q.id}`} className="btn primary">Let&apos;s go!</Link>
+          </article>
+        ))}
+      </section>
+
+      {/* Today’s vibe */}
+      <section className="card">
+        <h2>Today’s vibe</h2>
+        <div className="row">
+          <small>Practice minutes (total)</small>
+          <span className="pill">Attempts: {progress.attempts || 0}</span>
+        </div>
+        <div className="bar">
+          <div className="bar-fill" style={{ width: `${Math.min(progress.minutes || 0, 60) / 60 * 100}%` }} />
+        </div>
+      </section>
+
+      {/* Sticker book */}
+      <section className="card">
         <h2>Sticker Book</h2>
-        <div className="flex" style={{ flexWrap: 'wrap' }}>
-          {(p.stickers || []).length === 0 && (
-            <p className="small">Earn a sticker by finishing an activity.</p>
+        <div className="sticker-row">
+          {stickers.length === 0 ? (
+            <small>No stickers yet. Complete an activity to earn one!</small>
+          ) : (
+            stickers.map((src, i) => (
+              <Image key={i} src={src} alt="sticker" className="sticker" width={72} height={72} />
+            ))
           )}
-          {(p.stickers || []).map((s, i) => (
-            <Image key={i} className="sticker" src={s} alt="sticker" width={72} height={72} />
-          ))}
         </div>
-      </div>
-    </Layout>
+      </section>
+
+      <footer className="made">
+        Made with calm vibes for Samuel &amp; Spencer • Local‑first • No pressure
+      </footer>
+
+      <style jsx>{`
+        .page { padding: 24px; max-width: 1100px; margin: 0 auto; }
+        .toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+        .lbl { font-weight: 600; }
+        .select { padding: 8px 10px; border-radius: 10px; border: 1px solid #e6e6f0; }
+        .chip { padding: 8px 12px; border-radius: 999px; background: #f1efff; border: 1px solid #e0dcff; }
+        .btn { padding: 10px 14px; border-radius: 12px; background: #eee; display: inline-block; }
+        .btn.primary { background: linear-gradient(180deg,#7b61ff,#6a42ff); color: white; box-shadow: 0 10px 30px rgba(106,66,255,.25); }
+        .card { background: white; border-radius: 18px; padding: 16px; box-shadow: 0 12px 35px rgba(80,64,255,.08); margin-bottom: 18px; }
+        .welcome h1 { margin: 0 0 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; margin-bottom: 8px; }
+        .quest { display: flex; flex-direction: column; gap: 12px; min-height: 220px; }
+        .quest-top { display: flex; align-items: center; gap: 10px; }
+        .quest-icon { font-size: 22px; }
+        .quest-title { margin: 0; }
+        .targets { color: #667085; margin: 0; min-height: 36px; }
+        .row { display: flex; justify-content: space-between; align-items: center; }
+        .pill { background: #efeaff; color: #4737ff; padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; }
+        .bar { height: 8px; background: #eef0f7; border-radius: 8px; overflow: hidden; }
+        .bar-fill { height: 100%; background: #9aa6ff; }
+        .sticker-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sticker { width: 72px; height: 72px; }
+        .made { text-align: center; color: #8b8ea3; margin: 18px 0 6px; font-size: 13px; }
+      `}</style>
+    </div>
   );
 }
