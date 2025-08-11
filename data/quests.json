@@ -1,113 +1,186 @@
 {
   "quests": [
     {
-      "id": "r-rocket",
-      "title": "R Rocket Quest",
-      "targets": [
-        "R-initial",
-        "R-medial",
-        "R-final"
-      ],
+      "id": "samuel-r-rocket",
+      "audience": "Samuel",
+      "title": "Rocket Quest",
+      "icon": "🚀",
+      "targets": ["R-initial", "R-medial", "R-final"],
       "activities": [
-        {
-          "type": "repeat_after_me",
-          "items": [
-            "rain",
-            "rope",
-            "rocket",
-            "rabbit",
-            "robot",
-            "car",
-            "door"
-          ]
-        },
-        {
-          "type": "sight_word_sprint",
-          "words": [
-            "because",
-            "another",
-            "between",
-            "important",
-            "through",
-            "enough",
-            "example"
-          ]
-        },
+        { "type": "repeat_after_me", "items": ["rain", "rope", "rocket", "rabbit", "robot", "car", "door"] },
+        { "type": "sight_word_sprint", "words": ["because", "another", "between", "important", "through", "enough", "example"] },
         {
           "type": "fluency_story",
-          "title": "Skylar\u2019s Secret Shortcut",
+          "title": "Skylar's Secret Shortcut",
           "paragraphs": [
             "Samuel and Spencer followed Skylar along a quiet trail.",
-            "The corgi turned left at a big rock\u2014and suddenly, a hidden playground appeared!"
+            "The corgi turned left at a big rock — and suddenly, a hidden playground appeared!"
           ],
           "questions": [
-            {
-              "q": "Who found the shortcut?",
-              "options": [
-                "Skylar",
-                "A cat",
-                "A bird"
-              ],
-              "answer": 0
-            },
-            {
-              "q": "Where did the trail lead?",
-              "options": [
-                "Playground",
-                "Library",
-                "Bakery"
-              ],
-              "answer": 0
-            }
+            { "q": "Who found the shortcut?", "options": ["Skylar", "A cat", "A bird"], "answer": 0 },
+            { "q": "Where did the trail lead?", "options": ["Playground", "Library", "Bakery"], "answer": 0 }
           ]
         }
       ],
       "reward": "/stickers/sticker_1.png"
     },
     {
-      "id": "sh-ship",
-      "title": "SH Ship Quest",
-      "targets": [
-        "SH-initial"
-      ],
+      "id": "samuel-l-lighthouse",
+      "audience": "Samuel",
+      "title": "Lighthouse Quest",
+      "icon": "🗼",
+      "targets": ["L-initial", "L-medial"],
       "activities": [
+        { "type": "repeat_after_me", "items": ["lamp", "lake", "lemon", "ladder", "balloon", "color", "jelly"] },
+        { "type": "sight_word_sprint", "words": ["several", "usually", "especially", "possible", "problem", "remember"] },
         {
-          "type": "repeat_after_me",
-          "items": [
-            "ship",
-            "shell",
-            "shop",
-            "shark",
-            "shoe"
+          "type": "fluency_story",
+          "title": "Luca's Lighthouse",
+          "paragraphs": [
+            "Luca lit the little lighthouse for lost boats at dusk.",
+            "A loud cheer rose when a late boat found the long pier."
+          ],
+          "questions": [
+            { "q": "What did Luca light?", "options": ["A lighthouse", "A campfire", "A lamp in a cave"], "answer": 0 }
           ]
-        },
+        }
+      ],
+      "reward": "/stickers/sticker_3.png"
+    },
+    {
+      "id": "samuel-s-starfish",
+      "audience": "Samuel",
+      "title": "Starfish S Quest",
+      "icon": "⭐",
+      "targets": ["S-initial", "S-medial"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["sun", "soap", "sand", "stove", "bus", "whistle"] },
+        { "type": "sight_word_sprint", "words": ["sudden", "consider", "distance", "during", "second", "notice"] },
         {
-          "type": "sight_word_sprint",
-          "words": [
-            "favorite",
-            "different",
-            "probably",
-            "beautiful",
-            "friend"
+          "type": "fluency_story",
+          "title": "Starfish Surprise",
+          "paragraphs": [
+            "Skylar spotted a small starfish stuck on a smooth stone.",
+            "Samuel slid it back into the sea with a smile."
+          ],
+          "questions": [
+            { "q": "What did Skylar spot?", "options": ["A starfish", "A seal", "A crab"], "answer": 0 }
           ]
-        },
+        }
+      ],
+      "reward": "/stickers/sticker_6.png"
+    },
+    {
+      "id": "samuel-r-train",
+      "audience": "Samuel",
+      "title": "R Train Quest",
+      "icon": "🚂",
+      "targets": ["R-blends"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["train", "tree", "truck", "green", "grape", "brown", "brick"] },
+        { "type": "sight_word_sprint", "words": ["really", "around", "across", "perhaps", "return", "practice"] },
+        {
+          "type": "fluency_story",
+          "title": "Rumble Train",
+          "paragraphs": [
+            "The train rolled across the bridge with a friendly r-r-rumble.",
+            "Samuel waved as the green cars rattled by."
+          ],
+          "questions": [
+            { "q": "What rumbled?", "options": ["A train", "A bike", "A river"], "answer": 0 }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_7.png"
+    },
+
+    {
+      "id": "spencer-th-thunder",
+      "audience": "Spencer",
+      "title": "Thunder Quest",
+      "icon": "⛈️",
+      "targets": ["TH-initial", "TH-medial"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["think", "thumb", "thunder", "thick", "tooth", "bath"] },
+        { "type": "sight_word_sprint", "words": ["though", "thought", "throughout", "therefore", "thirty", "wealth"] },
+        {
+          "type": "fluency_story",
+          "title": "Theo and the Thundercloud",
+          "paragraphs": [
+            "Theo thanked the farmer for a thick, warm blanket.",
+            "Thunder rumbled, then the clouds thinned and the sun threw a bright smile."
+          ],
+          "questions": [
+            { "q": "What did Theo hear?", "options": ["Thunder", "Whales", "Trumpets"], "answer": 0 }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_4.png"
+    },
+    {
+      "id": "spencer-sh-ship",
+      "audience": "Spencer",
+      "title": "SH Ship Quest",
+      "icon": "🚢",
+      "targets": ["SH-initial"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["ship", "shell", "shop", "shark", "shoe"] },
+        { "type": "sight_word_sprint", "words": ["favorite", "different", "probably", "beautiful", "friend"] },
         {
           "type": "fluency_story",
           "title": "The Shiny Shell",
           "paragraphs": [
             "Skylar nudged a shiny shell across the sand.",
-            "Samuel and Spencer held it to their ears and heard the sea say, \u2018hello!\u2019"
+            "Samuel and Spencer held it to their ears and heard the sea say, 'hello!'"
           ],
           "questions": [
-            {
-              "q": "What did Skylar find?",
-              "options": [
-                "A shell",
-                "A coin",
-                "A toy"
-              ],
-              "answer": 0
-            }
+            { "q": "What did Skylar find?", "options": ["A shell", "A coin", "A toy"], "answer": 0 }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_5.png"
+    },
+    {
+      "id": "spencer-ch-choices",
+      "audience": "Spencer",
+      "title": "CH/SH Choice Quest",
+      "icon": "🎯",
+      "targets": ["CH vs SH (minimal pairs)"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["ship/chip", "shop/chop", "she/cheese", "shore/chores", "shark/chalk"] },
+        { "type": "sight_word_sprint", "words": ["choose", "chance", "share", "shape", "chapter", "should"] },
+        {
+          "type": "fluency_story",
+          "title": "Choose the Shore",
+          "paragraphs": [
+            "Spencer chose the shady shore to share snacks with Skylar.",
+            "They checked shells and shouted with cheerful joy."
+          ],
+          "questions": [
+            { "q": "Where did Spencer go?", "options": ["Shore", "Shop", "Church"], "answer": 0 }
+          ]
+        }
+      ],
+      "reward": "/stickers/sticker_8.png"
+    },
+    {
+      "id": "spencer-th-treasure",
+      "audience": "Spencer",
+      "title": "TH Treasure Path",
+      "icon": "🗺️",
+      "targets": ["TH-final", "TH-initial"],
+      "activities": [
+        { "type": "repeat_after_me", "items": ["bath", "tooth", "with", "both", "think", "thumb"] },
+        { "type": "sight_word_sprint", "words": ["other", "both", "within", "those", "then", "their"] },
+        {
+          "type": "fluency_story",
+          "title": "Treasure Path",
+          "paragraphs": [
+            "Skylar found a thin thread leading to a tiny chest.",
+            "They both thought the path was thrilling!"
+          ],
+          "questions": [
+            { "q": "What did Skylar find?", "options": ["A thread", "A throne", "A thorn"], "answer": 0 }
           ]
         }
       ],
